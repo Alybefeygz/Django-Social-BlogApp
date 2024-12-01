@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{post.title}}</title>
+</head>
+<body style="background-color:burlywood ">
+    <h1>{{post.title}}</h1>
+    <p>{{post.content}}</p>
+    <p>Posted on {{post.date_posted}}</p>
+
+    <h2>Comments</h2>
+    
+    {% for comment in  comments %}
+        <div>
+            <p><strong>{{commnent.name}}</strong>({{comment.email}})</p>
+            <p>{{comment.body}}</p>
+            <p>Added on {{comment.date_added}}</p>
+        </div>
+    {% endfor %}
+
+    <h2>Add a comment </h2>
+    <form method="post">
+        {% csrf_token %}
+        {{commnet_form.as_p}}
+        <button type="submit">Add comment</button>
+    </form>
+        
+</body>
+</html>
